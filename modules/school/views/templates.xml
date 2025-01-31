@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+
+        <template id="school_template" name="School Page">
+
+
+            <div class="container">
+                <h1>Formulario de nota de estudiante</h1>
+                <form action="/module/school/students" method="POST">
+                  <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <!-- <label for="nombre">Asiste</label>
+                      <input type="text" id="nombre" name="nombre" value="" required="True"/>
+                      
+                      <label for="email">Email:</label>
+                      <input type="email" id="email" name="email" value="" required="True"/>
+                       -->
+                    <button type="submit">Realizar prediccion</button>
+                </form>
+
+            </div>
+
+        </template>
+
+        <template id="school_predicting" name="Predigting">
+
+            <div class="container">
+                <h1>Data predicting</h1>
+                <p>Predicción: <t t-esc="predicting"/></p>
+                <p>Si es 1 aprobado, 0 reprobado</p>
+
+            </div>
+
+        </template>
+
+
+        <!-- <template id="school_predicting" name="Prediccion">
+
+            <div class="container">
+                <h1>Prediccion del rendimiento</h1>
+                <p>Prediccion : <t t-esc="predicting"></t>
+                </p>
+                <p>Si es 1 aprobado, 0 reprobado</p>
+            </div>
+
+        </template> -->
+
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">student.tree.view</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name" />
+                    <field name="date_birthday" />
+                </list>
+            </field>
+        </record>
+
+
+
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form.view</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="date_birthday" />
+                    </group>
+
+                    <group>
+                        <field name="employee_id" placeholder="Type to find a employee..." />
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">Students</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="menu_root" name="School" />
+        <menuitem id="menu_students" name="Students" parent="menu_root" />
+        <menuitem id="menu_students_list" name="Student List" parent="menu_students" action="student_action" />
+        <!--
+        <template id="listing">
+          <ul>
+            <li t-foreach="objects" t-as="object">
+              <a t-attf-href="#{ root }/objects/#{ object.id }">
+                <t t-esc="object.display_name"/>
+              </a>
+            </li>
+          </ul>
+        </template>
+        <template id="object">
+          <h1><t t-esc="object.display_name"/></h1>
+          <dl>
+            <t t-foreach="object._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="object[field]"/></dd>
+            </t>
+          </dl>
+        </template>
+-->
+    </data>
+</odoo>

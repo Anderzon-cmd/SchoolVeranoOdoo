@@ -1,0 +1,22 @@
+services:
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - "8069:8069"
+    volumes:
+      # - ./config:/etc/odoo
+      - ./modules:/mnt/extra-addons
+      - ./requirements.txt:/tmp/requirements.txt
+      - data:/var/lib/odoo
+    networks:
+      - database-pgsql_default
+    
+    container_name: school-soft 
+volumes:
+  data:
+networks:
+  database-pgsql_default:
+    external: true
