@@ -1,3 +1,4 @@
+version: '3'
 services:
   odoo:
     build:
@@ -7,7 +8,7 @@ services:
     ports:
       - "8069:8069"
     volumes:
-      # - ./config:/etc/odoo
+      - ./config:/etc/odoo
       - ./modules:/mnt/extra-addons
       - ./requirements.txt:/tmp/requirements.txt
       - data:/var/lib/odoo
@@ -17,6 +18,6 @@ services:
     container_name: school-soft 
 volumes:
   data:
-networks:
-  database-pgsql_default:
-    external: true
+# networks:
+#   database-pgsql_default:
+#     external: true
