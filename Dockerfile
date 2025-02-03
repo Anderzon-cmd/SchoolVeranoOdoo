@@ -22,6 +22,7 @@ RUN pip3 install --break-system-packages -r /tmp/requirements.txt
 
 # USER odoo
 # ENV PATH="/opt/odoo-venv/bin:$PATH"
+USER odoo
 
 EXPOSE 8069
 CMD ["odoo", "-c", "/etc/odoo/odoo.conf"]

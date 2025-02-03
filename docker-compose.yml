@@ -11,8 +11,8 @@ services:
       - ./modules:/mnt/extra-addons
       - ./requirements.txt:/tmp/requirements.txt
       - data:/var/lib/odoo
-    networks:
-      - database-pgsql_default
+    # networks:
+    #   - database-pgsql_default
     
     container_name: school-soft 
 volumes:

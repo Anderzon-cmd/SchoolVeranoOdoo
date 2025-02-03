@@ -11,7 +11,7 @@
                     <field name="code"/>
                     <field name="type"/>
                     <field name="subject_type"/>
-                    <field name="grade_weightage"/>
+                    <field name="grade_weightage" string="Grado de importancia"/>
                     <field name="department_id" groups="openeducat_core.group_multi_department"/>
                 </list>
             </field>
@@ -37,7 +37,7 @@
                             </group>
                             <group>
                                 <field name="code"/>
-                                <field name="grade_weightage"/>
+                                <field name="grade_weightage" string="Grado de importancia" />
                             </group>
                         </group>
                     </sheet>
